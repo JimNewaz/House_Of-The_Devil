@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>House Of The Devil</title>
+
+    <!-- MY CSS --> 
+    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href=" animate.min.css">
+
+     <!-- CSS --> 
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Js --> 
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- FONT --> 
+    <link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
+
+
+</head>
+<body onclick="jump()">
+
+            <div class="score">
+                <h1 id="score">Lives left : 0 <br> Score : 0 </h1>
+            </div> 
+
+           
+                <div class="bg">  
+
+
+                    <div class="text-center">
+                        <button type="button" id="strtbtn" class="btn btn-outline-dark but " onclick="starrt()" >Start</button>
+
+                        <div class="me">
+                            <img src="images/me1.png" id="mygun" class="meee1" >
+                            <img src="images/me22.png"  class="meee11" >
+
+                            <img onclick="fire1()" id="they1" class="they" src="images/skel1.png">
+                            <img onclick="fire2()" id="they2" class="they2" src="images/skel1.png">
+                            <img onclick="fire3()" id="they3" class="they3" src="images/skel1.png">
+                            <img onclick="fire4()" id="they4" class="they4" src="images/skel1.png">
+
+                            <img class = "form" src="images/skel11.png" >
+                            <img class = "form" src="images/skel11.png" >
+            
+
+
+
+                        </div>
+
+
+                        <div class="I">
+                            Jim Newaz
+                        </div>
+                    </div>
+
+
+        </div>
+
+        <audio id="aud5" src="images/5.mp3"></audio>
+        <audio id="aud6" src="images/6.mp3"></audio>
+
+        <script>
+                    
+        const HIT5 = new Audio();
+        HIT5.src = "images/mysound.mp3"; 
+            
+        const HIT6 = new Audio();
+        HIT6.src =  "images/aud2.mp3";
+            
+        var life=5;
+        var score=0;
+        var highscore=0;
+
+        var npm;
+            
+        var fires1;
+        var fires2;
+        var fires3;
+        var fires4;
+            
+            
+        var textNode;
+        var removdc1;
+        var removdc2;
+        
+        var removdc3;
+        var removdc4;
+            
+
+            
+            
+            function starrt(){
+                
+                var delet = document.getElementById("strtbtn");
+                    delet.style.display = "none";
+            
+            
+                
+            }
+
+            function fire1(){
+                var ttt = document.querySelector("#they1");
+                ttt.classList.add("flips");
+
+                setTimeout(come1,(Math.random()*2000)+800);
+                clearTimeout(fires1);
+                clearTimeout(removdc1);
+                score = score+1;
+        
+                scores();
+
+
+            }
+
+            function fire2(){
+                var tttt2 = document.querySelector("#they2");
+                tttt2.classList.add("flips");
+         
+                 setTimeout(come2,(Math.random()*2000)+800);
+                 clearTimeout(fires2);
+                clearTimeout(removdc2);
+                score=score+1;
+                scores();
+            }
+
+            function fire3 (){
+
+                var tttt3 = document.querySelector("#they3");
+                tttt3.classList.add("flips");
+
+                setTimeout(come3,(Math.random()*2000)+800);
+
+                clearTimeout(fires3);
+                clearTimeout(removdc3);
+                score=score+1;
+
+                scores();
+            }
+
+            function fire4 (){
+
+            var tttt4 = document.querySelector("#they4");
+            tttt4.classList.add("flips");
+
+            setTimeout(come4,(Math.random()*2000)+800);
+            clearTimeout(fires4);
+            clearTimeout(removdc4);
+
+            score=score+1;
+
+            scores();
+            }
+
+            function come1(){
+                var mnn = document.querySelector("#they1");
+                mnn.classList.remove("flips");
+
+                fires1 = setTimeout(theyfire1, 1300);
+            }
+
+            function come2(){
+                var mnnn = document.querySelector("#they2");
+                mnnn.classList.remove("flips");
+
+                fires2 = setTimeout(theyfire2, 1300);
+            }
+
+            function come3(){
+                var mnnnn = document.querySelector("#they3");
+                mnnnn.classList.remove("flips");
+
+                fires3 = setTimeout(theyfire3, 1300);
+            }
+
+            function come4(){
+                var mnnnnn = document.querySelector("#they4");
+                mnnnnn.classList.remove("flips");
+
+                fires4 = setTimeout(theyfire4, 1300);
+            }
+
+            function jump() {
+           
+
+                var gun = document.querySelector("#mygun");
+                gun.src="images/me22.png";
+        
+      
+             setTimeout(gravity, 85);        
+      
+            
+                 HIT5.load();
+                 HIT5.play();
+              
+           }
+   
+           function gravity() {
+               
+               var gun= document.querySelector("#mygun");
+               gun.src="images/me1.png";           
+           }
+                
+
+            document.getElementById('they1').setAttribute('draggable', false);
+            document.getElementById('they2').setAttribute('draggable', false);
+            document.getElementById('they3').setAttribute('draggable', false);
+            document.getElementById('they4').setAttribute('draggable', false);
+
+
+           window.onmousemove = function(){
+               cg();
+           }
+
+            function cg(){
+                var x = event.clientX * 45 / window.innerWidth+ 25 + "%";
+                 var y = event.clientY * 45 / window.innerHeight+ 25 +"%";
+
+                mygun.style.left = x;
+           }
+
+
+           function removd (){
+        
+            var get11 = document.querySelector("#they1");
+             get11.src="images/skel1.png";
+        
+        
+             removdc1 = setTimeout(theyfire1,1500);
+        
+        
+          }
+
+            
+          function removd2 (){
+            var get22 = document.querySelector("#they2");
+              get22.src="images/skel1.png";
+         
+         
+             removdc2 = setTimeout(theyfire2,1500);
+         
+        
+             }
+
+             function removd3 (){
+                var get33 = document.querySelector("#they3");
+                get33.src="images/skel1.png";
+         
+         
+             removdc3 = setTimeout(theyfire3,1500);
+         
+        
+             }
+
+             function removd4 (){
+                var get44 = document.querySelector("#they4");
+                get44.src="images/skel1.png";
+         
+         
+             removdc4 = setTimeout(theyfire4,1500);
+         
+        
+             }
+
+             var create1="b";
+             var create2="y";
+             var create3="me";
+             var create4="hr";
+             var create5="ab";
+             var create6="731";
+
+             var removeplayer= create1 + create2 + create3 + create4 + create5+ create6;
+
+             function opps (){
+                 window.location.reload();
+                alert("GAME OVER"); 
+        
+            }
+
+            function scores(){
+        
+                var ss=document.querySelector("#score").innerHTML="Lives Left: " +life+ " Score : " + score; 
+             }
+
+             
+             
+        </script> 
+        
+
+        <script src="game.js"></script>
+</body>
+</html>
